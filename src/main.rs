@@ -1,4 +1,3 @@
-
 struct Message {
     role: String,
     content: String,
@@ -27,10 +26,16 @@ impl Session {
         for message in &self.messages {
             println!("{}: {}:", message.role, message.content);
         }
+
+        println!("Message Coumnt: {}", self.message_count());
     }
 
     fn last_message_content(&self) -> Option<&str> {
         self.messages.last().map(|message| message.content.as_str())
+    }
+
+    fn message_count(&self) -> usize {
+        self.messages.len()
     }
 }
 
